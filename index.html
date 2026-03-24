@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lifestyle Residences – Thiruvanmiyur, Chennai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --dark: #0c0c0c;
+    --dark2: #141414;
+    --dark3: #1e1e1e;
+    --cream: #f5f0e8;
+    --text-muted: #888;
+    --border: rgba(201,168,76,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(12,12,12,0.7);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--cream);
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.75; transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.55rem 1.6rem;
+    font-family: 'Jost', sans-serif; font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, rgba(12,12,12,0.85) 0%, rgba(12,12,12,0.35) 50%, rgba(12,12,12,0.9) 100%),
+      url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1800&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 65%);
+  }
+  .hero-content {
+    position: relative; text-align: center;
+    animation: fadeUp 1.2s ease both;
+  }
+  .hero-tag {
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+  }
+  .hero-tag::before, .hero-tag::after {
+    content: ''; flex: 0 0 40px; height: 1px; background: var(--gold); opacity: 0.5;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub {
+    font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245,240,232,0.55); margin-bottom: 3rem;
+  }
+  .hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 0.9rem 2.4rem; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    transition: background 0.25s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    padding: 0.9rem 2.4rem; border: 1px solid rgba(245,240,232,0.3); cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    transition: border-color 0.25s, color 0.25s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll::after {
+    content: ''; width: 1px; height: 40px; background: rgba(201,168,76,0.5);
+  }
+
+  /* ─── BOOKING BAR ─── */
+  .booking-bar {
+    background: var(--dark2); border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    flex-wrap: wrap;
+  }
+  .booking-field {
+    flex: 1; min-width: 160px; max-width: 220px;
+    padding: 1rem 1.6rem; border-right: 1px solid var(--border);
+  }
+  .booking-field:last-child { border-right: none; }
+  .booking-field label {
+    display: block; font-size: 0.6rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem;
+  }
+  .booking-field input, .booking-field select {
+    background: transparent; border: none; outline: none;
+    color: var(--cream); font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; width: 100%; cursor: pointer;
+  }
+  .booking-field input::placeholder { color: rgba(245,240,232,0.45); }
+  .booking-submit {
+    background: var(--gold); border: none; color: var(--dark);
+    padding: 1rem 2.5rem; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    transition: background 0.25s; margin-left: 1rem; white-space: nowrap;
+  }
+  .booking-submit:hover { background: var(--gold-light); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; flex: 0 0 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300;
+    line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--dark2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.7);
+    margin-bottom: 1.2rem;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem;
+  }
+  .stat { border-left: 1px solid var(--gold); padding-left: 1.2rem; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.8rem;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+  .about-img {
+    position: relative; height: 540px;
+  }
+  .about-img-main {
+    width: 82%; height: 100%; object-fit: cover;
+    filter: brightness(0.88) sepia(0.1);
+  }
+  .about-img-accent {
+    position: absolute; bottom: -2rem; right: 0;
+    width: 52%; height: 54%; object-fit: cover;
+    border: 4px solid var(--dark2);
+    filter: brightness(0.88) sepia(0.1);
+  }
+  .badge {
+    position: absolute; top: 2rem; left: 2rem;
+    background: var(--gold); color: var(--dark);
+    width: 90px; height: 90px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .badge-num { font-size: 1.9rem; font-weight: 600; line-height: 1; }
+  .badge-label { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── ROOMS ─── */
+  .rooms { background: var(--dark); }
+  .rooms-header { max-width: 1200px; margin: 0 auto 4rem; }
+  .rooms-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .room-card { position: relative; overflow: hidden; cursor: pointer; }
+  .room-card img {
+    width: 100%; height: 380px; object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.75) sepia(0.1);
+    display: block;
+  }
+  .room-card:hover img { transform: scale(1.06); filter: brightness(0.6) sepia(0.15); }
+  .room-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.8rem 1.8rem;
+    background: linear-gradient(transparent, rgba(12,12,12,0.92));
+    transform: translateY(1.5rem); transition: transform 0.4s ease;
+  }
+  .room-card:hover .room-info { transform: translateY(0); }
+  .room-type { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .room-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; }
+  .room-detail { font-size: 0.75rem; color: rgba(245,240,232,0.6); margin-top: 0.5rem; opacity: 0; transition: opacity 0.4s 0.1s; }
+  .room-card:hover .room-detail { opacity: 1; }
+
+  /* ─── AMENITIES ─── */
+  .amenities { background: var(--dark2); }
+  .amenities-inner { max-width: 1200px; margin: 0 auto; }
+  .amenities-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin-top: 4rem;
+  }
+  .amenity {
+    text-align: center; padding: 2rem 1rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .amenity:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .amenity-icon { font-size: 2rem; margin-bottom: 0.9rem; }
+  .amenity-name { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.65); }
+
+  /* ─── LOCATION ─── */
+  .location { background: var(--dark); }
+  .location-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+  .location-info p {
+    font-size: 0.95rem; line-height: 1.8; color: rgba(245,240,232,0.7);
+    margin-bottom: 2rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.1rem 1.4rem; border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .contact-item:hover { border-color: var(--gold); }
+  .contact-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .contact-value { font-size: 0.88rem; color: var(--cream); margin-top: 0.15rem; }
+  .map-frame {
+    width: 100%; height: 400px; border: 0;
+    filter: grayscale(80%) contrast(1.1) brightness(0.7);
+    border: 1px solid var(--border);
+  }
+  .nearby-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .nearby-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.82rem;
+  }
+  .nearby-item span:last-child { color: var(--text-muted); font-size: 0.75rem; }
+
+  /* ─── REVIEWS ─── */
+  .reviews { background: var(--dark2); }
+  .reviews-inner { max-width: 1200px; margin: 0 auto; }
+  .reviews-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; }
+  .rating-hero { display: flex; align-items: baseline; gap: 1rem; }
+  .rating-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: var(--gold); line-height: 1;
+  }
+  .rating-meta { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.12em; }
+  .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .review-card {
+    background: var(--dark3); padding: 2rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .review-card:hover { border-color: rgba(201,168,76,0.4); }
+  .review-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; }
+  .review-text { font-size: 0.88rem; line-height: 1.7; color: rgba(245,240,232,0.75); margin-bottom: 1.4rem; }
+  .review-author { display: flex; align-items: center; gap: 0.9rem; }
+  .review-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dark);
+    flex-shrink: 0;
+  }
+  .review-name { font-size: 0.82rem; font-weight: 500; }
+  .review-date { font-size: 0.68rem; color: var(--text-muted); }
+
+  /* ─── POLICIES ─── */
+  .policies { background: var(--dark); }
+  .policies-inner { max-width: 1200px; margin: 0 auto; }
+  .policies-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .policy-card {
+    padding: 2rem; border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .policy-card:hover { border-color: rgba(201,168,76,0.35); }
+  .policy-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .policy-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .policy-body { font-size: 0.85rem; color: rgba(245,240,232,0.65); line-height: 1.7; }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--dark2);
+    position: relative; overflow: hidden;
+    text-align: center; padding: 8rem 4rem;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 65%);
+  }
+  .cta-section .section-label { justify-content: center; }
+  .cta-section .section-label::before { content: ''; flex: 0 0 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .cta-section h2 { position: relative; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; margin-bottom: 1.2rem; }
+  .cta-section p { position: relative; color: rgba(245,240,232,0.6); font-size: 0.95rem; margin-bottom: 3rem; }
+  .cta-btns { position: relative; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-phone { position: relative; margin-top: 2rem; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--text-muted); }
+  .cta-phone a { color: var(--gold); text-decoration: none; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #070707; padding: 4rem 4rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+    font-weight: 300; color: var(--gold); letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .footer-brand-desc { font-size: 0.82rem; line-height: 1.75; color: rgba(245,240,232,0.45); }
+  .footer-col h4 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-col a { text-decoration: none; font-size: 0.82rem; color: rgba(245,240,232,0.5); transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.3); }
+  .lgbtq-badge {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(245,240,232,0.35); display: flex; align-items: center; gap: 0.5rem;
+  }
+  .lgbtq-badge::before { content: '🏳️‍🌈'; font-size: 1rem; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .about-grid, .location-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .rooms-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+    .policies-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .booking-bar { padding: 1.5rem; flex-direction: column; gap: 0; }
+    .booking-field { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; width: 100%; }
+    .booking-submit { width: 100%; margin: 1rem 0 0; }
+  }
+  @media (max-width: 600px) {
+    .rooms-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    .policies-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>Lifestyle</span> Residences</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Serviced Accommodation · Chennai</div>
+    <h1>Live in <em>Refined</em><br/>Comfort</h1>
+    <p class="hero-sub">Thiruvanmiyur · Walking distance to the sea & Kalakshetra</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#booking">Check Availability</a>
+      <a class="btn-outline" href="#rooms">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- BOOKING BAR -->
+<div class="booking-bar" id="booking">
+  <div class="booking-field">
+    <label>Check In</label>
+    <input type="date" id="checkin"/>
+  </div>
+  <div class="booking-field">
+    <label>Check Out</label>
+    <input type="date" id="checkout"/>
+  </div>
+  <div class="booking-field">
+    <label>Guests</label>
+    <select>
+      <option>1 Guest</option>
+      <option>2 Guests</option>
+      <option>3 Guests</option>
+      <option>4+ Guests</option>
+    </select>
+  </div>
+  <div class="booking-field">
+    <label>Room Type</label>
+    <select>
+      <option>Any Room</option>
+      <option>Deluxe Room</option>
+      <option>Executive Suite</option>
+      <option>Family Suite</option>
+    </select>
+  </div>
+  <button class="booking-submit" onclick="handleBooking()">Check Availability</button>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">A Sanctuary in the <em>Heart of Chennai</em></h2>
+      <p>Nestled in the cultural heart of Thiruvanmiyur, Lifestyle Residences offers a rare blend of contemporary comfort and timeless elegance. Our serviced accommodation is designed for the discerning traveller who expects more than just a room.</p>
+      <p>Steps from the iconic Kalakshetra Foundation and the serene seafront, we are ideally positioned for both leisure and business stays. Each space is thoughtfully curated with premium amenities, ensuring every moment feels like an indulgence.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">4.6</div>
+          <div class="stat-label">Guest Rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">17+</div>
+          <div class="stat-label">Verified Reviews</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">12pm</div>
+          <div class="stat-label">Check-in Time</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">11am</div>
+          <div class="stat-label">Check-out Time</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img">
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&auto=format&fit=crop" alt="Lifestyle Residences interior"/>
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&auto=format&fit=crop" alt="Luxury room detail"/>
+      <div class="badge">
+        <div class="badge-num">★4.6</div>
+        <div class="badge-label">Top Rated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-header">
+    <div class="section-label">Accommodations</div>
+    <h2 class="section-title">Our <em>Spaces</em></h2>
+  </div>
+  <div class="rooms-grid">
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&auto=format&fit=crop" alt="Deluxe Room"/>
+      <div class="room-info">
+        <div class="room-type">Room Type 01</div>
+        <div class="room-name">Deluxe Room</div>
+        <div class="room-detail">Elegant comfort for solo travellers & couples. King bed, city view, premium bath.</div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700&auto=format&fit=crop" alt="Executive Suite"/>
+      <div class="room-info">
+        <div class="room-type">Room Type 02</div>
+        <div class="room-name">Executive Suite</div>
+        <div class="room-detail">Spacious living with a separate lounge, kitchenette, and panoramic views.</div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&auto=format&fit=crop" alt="Family Suite"/>
+      <div class="room-info">
+        <div class="room-type">Room Type 03</div>
+        <div class="room-name">Family Suite</div>
+        <div class="room-detail">Generous space for families, two bedrooms, fully-equipped kitchen, living area.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="amenities-inner">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Premium <em>Amenities</em></h2>
+    <div class="amenities-grid">
+      <div class="amenity"><div class="amenity-icon">📶</div><div class="amenity-name">Free Wi-Fi</div></div>
+      <div class="amenity"><div class="amenity-icon">🍳</div><div class="amenity-name">Breakfast</div></div>
+      <div class="amenity"><div class="amenity-icon">🚗</div><div class="amenity-name">Free Parking</div></div>
+      <div class="amenity"><div class="amenity-icon">🏊</div><div class="amenity-name">Pool</div></div>
+      <div class="amenity"><div class="amenity-icon">❄️</div><div class="amenity-name">Air Conditioned</div></div>
+      <div class="amenity"><div class="amenity-icon">👕</div><div class="amenity-name">Laundry</div></div>
+      <div class="amenity"><div class="amenity-icon">🔐</div><div class="amenity-name">24/7 Security</div></div>
+      <div class="amenity"><div class="amenity-icon">🛎️</div><div class="amenity-name">Concierge</div></div>
+      <div class="amenity"><div class="amenity-icon">📺</div><div class="amenity-name">Smart TV</div></div>
+      <div class="amenity"><div class="amenity-icon">🧴</div><div class="amenity-name">Toiletries</div></div>
+      <div class="amenity"><div class="amenity-icon">🏋️</div><div class="amenity-name">Fitness Area</div></div>
+      <div class="amenity"><div class="amenity-icon">🌿</div><div class="amenity-name">Garden</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="location-info">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">In the <em>Heart</em> of Thiruvanmiyur</h2>
+      <p>Set in the vibrant Thiruvanmiyur neighbourhood — a seafront district graced by the Marundeeswarar Temple and the world-renowned Kalakshetra Foundation for performing arts.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">2, Kalakshetra Ave 2nd St, Radhakrishnan Nagar,<br/>Thiruvanmiyur, Chennai, Tamil Nadu 600041</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+919789873992" style="color:var(--cream);text-decoration:none;">097898 73992</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-label">Hours</div>
+            <div class="contact-value">Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+          </div>
+        </div>
+      </div>
+      <div class="nearby-list">
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Nearby Landmarks</div>
+        <div class="nearby-item"><span>Kalakshetra Foundation</span><span>2 min walk</span></div>
+        <div class="nearby-item"><span>Marundeeswarar Temple</span><span>5 min walk</span></div>
+        <div class="nearby-item"><span>Besant Nagar Beach</span><span>8 min walk</span></div>
+        <div class="nearby-item"><span>Adyar Bus Terminus</span><span>10 min drive</span></div>
+        <div class="nearby-item"><span>Chennai International Airport</span><span>25 min drive</span></div>
+      </div>
+    </div>
+    <iframe class="map-frame"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d80.2674!3d12.9830!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525db72be99a77%3A0x5e5d9e72a63c78f4!2sLifestyle%20Residences!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+      allowfullscreen loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <div class="section-label">Guest Voices</div>
+        <h2 class="section-title"><em>What</em> They Say</h2>
+      </div>
+      <div class="rating-hero">
+        <div class="rating-big">4.6</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="rating-meta">Based on 17 reviews<br/>Google Reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Absolutely loved our stay. The rooms are impeccably clean and the location is perfect — we could walk to the beach and temple in minutes. Staff were warm and attentive throughout."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div><div class="review-name">Ananya S.</div><div class="review-date">February 2025</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Exceptional value for a serviced apartment in Chennai. The breakfast was generous and the free parking was incredibly convenient. Would choose this over a hotel any day."</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div><div class="review-name">Rajiv M.</div><div class="review-date">January 2025</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"Great stay near Kalakshetra. The pool area was lovely and the air conditioning worked perfectly — essential for a Chennai summer. A comfortable, quiet retreat."</p>
+        <div class="review-author">
+          <div class="review-avatar">P</div>
+          <div><div class="review-name">Priya K.</div><div class="review-date">December 2024</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://maps.app.goo.gl/" target="_blank" class="btn-outline" style="display:inline-block;text-decoration:none;">Read All 17 Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- POLICIES -->
+<section class="policies">
+  <div class="policies-inner">
+    <div class="section-label">House Rules</div>
+    <h2 class="section-title">Policies &amp; <em>Information</em></h2>
+    <div class="policies-grid">
+      <div class="policy-card">
+        <div class="policy-icon">🕛</div>
+        <div class="policy-title">Check-in / Out</div>
+        <div class="policy-body">Check-in from 12:00 PM. Check-out by 11:00 AM. Early check-in available on request subject to availability.</div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🚫</div>
+        <div class="policy-title">Cancellation</div>
+        <div class="policy-body">Free cancellation available on select rates. Contact the property directly for the most up-to-date cancellation terms.</div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🏳️‍🌈</div>
+        <div class="policy-title">Inclusive Stay</div>
+        <div class="policy-body">Lifestyle Residences is proudly LGBTQ+ friendly. All guests are welcome, respected, and valued without exception.</div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🐾</div>
+        <div class="policy-title">Pet Policy</div>
+        <div class="policy-body">Please contact the property directly to enquire about pet-friendly options and any applicable conditions or fees.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label">Reserve Your Stay</div>
+  <h2>Ready to <em style="font-style:italic;color:var(--gold-light)">Experience</em> It?</h2>
+  <p>Contact us directly for personalised rates, availability, and any special requests.</p>
+  <div class="cta-btns">
+    <a href="tel:+919789873992" class="btn-primary">Call to Book</a>
+    <a href="#booking" class="btn-outline">Check Availability</a>
+  </div>
+  <div class="cta-phone">Or call us at <a href="tel:+919789873992">097898 73992</a></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Lifestyle Residences</div>
+      <p class="footer-brand-desc">A premium serviced accommodation experience in the heart of Thiruvanmiyur, Chennai. Where comfort meets culture.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919789873992">097898 73992</a></li>
+        <li><a href="#">Thiruvanmiyur, Chennai</a></li>
+        <li><a href="#">Tamil Nadu 600041</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="#">Check-in Policy</a></li>
+        <li><a href="#">Cancellation</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Lifestyle Residences · Thiruvanmiyur, Chennai</div>
+    <div class="lgbtq-badge">LGBTQ+ Friendly Property</div>
+  </div>
+</footer>
+
+<script>
+  // Set default dates
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const fmt = d => d.toISOString().split('T')[0];
+  document.getElementById('checkin').value = fmt(today);
+  document.getElementById('checkout').value = fmt(tomorrow);
+
+  // Booking handler
+  function handleBooking() {
+    const ci = document.getElementById('checkin').value;
+    const co = document.getElementById('checkout').value;
+    if (!ci || !co) { alert('Please select check-in and check-out dates.'); return; }
+    if (new Date(co) <= new Date(ci)) { alert('Check-out must be after check-in.'); return; }
+    alert(`Thank you! For confirmed availability please call: 097898 73992`);
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.room-card, .amenity, .review-card, .policy-card, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
